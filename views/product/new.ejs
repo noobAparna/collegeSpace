@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate') %> 
+<link rel="stylesheet" href="/stylesheet/new.css">
+
+<div class="container mainDiv">
+    <h2 class="text-center">POST YOUR AD</h2>
+    <div class="row">
+        <div class="col-1 col-lg-2"></div>
+        <div class="col-10 col-lg-8 card shadow-lg innerDiv">
+            <h5 class="text-center">INCLUDE SOME DETAILS</h5>
+            <form action="/product" method="POST" novalidate class="validated-form">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="product[title]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea type="text" class="form-control" id="description" name="product[description]" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="price" name="product[price]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" name="product[location]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-5">
+                    <label for="image" class="form-label">Image</label>
+                    <input type="text" class="form-control" id="image" name="product[image]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <hr>
+                <!-- <div class="card user"> -->
+                    <h6>YOUR DETAILS</h6>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="product[name]">
+                    </div>
+                    <div class="mb-5">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="number" class="form-control" id="number" name="product[number]">
+                    </div>
+                <!-- </div> -->
+                <hr>
+
+                <div class="d-grid col-6 mx-auto mt-4 mb-4">
+                    <button class="btn btn-outline-success btn-sm">POST NOW</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-1 col-lg-2"></div>
+    </div>
+
+</div>

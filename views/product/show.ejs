@@ -1,0 +1,82 @@
+<% layout('layouts/boilerplate') %>
+    <link rel="stylesheet" href="/stylesheet/show.css">
+    <div class="container my-5 ">
+        <div class="row">
+            <div class="col-12 col-md-8 my-2 my-md-0">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    </div>
+                    <div class="carouselBody carousel-inner custom-carousel">
+                        <div class="carousel-item active carousel-inner">
+                            <img src="<%= product.image %> " class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item carousel-inner">
+                            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                                class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 my-2 my-md-0">
+
+                <div class="card product-details">
+                    <div class="card-body">
+                        <h3>
+                            <%= product.title %>
+                        </h3>
+                        <p>
+                            <%= product.description %>
+                        </p>
+                        <h4>
+                            $<%= product.price %>
+                        </h4>
+                        <div class="d-flex justify-content-between">
+                            <h6>
+                                <%= product.location %>
+                            </h6>
+                            <div class="text-muted">2days</div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="card product-details">
+                    <div class="card-body">
+                        <h6>Seller Description</h6>
+                        <h6>Aparna</h6>
+                        <div class="card-body">
+                            <a href="#" class="card-link">View Profile</a>
+                            <a href="#" class="card-link">Chat with seller</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <a href="/product/<%= product._id %>/edit">Edit</a>
+                    <a href="/product">All Product</a>
+        
+                    <form action="/product/<%= product._id %>?_method=DELETE" method="post">
+                        <button>Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        

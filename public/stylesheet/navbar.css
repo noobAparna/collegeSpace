@@ -1,0 +1,15 @@
+.bgCol{
+    background-color: #F9F9F9;
+    font-family: 'Nunito', sans-serif;
+}
+
+.navbar-row{
+    width: 100%;
+    display: flex;
+}
+
+.navbar-features{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
