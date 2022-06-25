@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') %> 
+<link rel="stylesheet" href="/stylesheet/register.css">
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4">
+    <h4 class="text-center mt-5 mb-3 heading">LOGIN</h4>
+    <div class="maindiv p-4 mb-5 rounded ">
+    <form action="/login" method="POST" class="validated-form" novalidate>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required name="email">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+        <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" required name="password">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+        </div>
+        <div class="d-grid gap-2 col-4 mx-auto">
+            <button class="btn btn-success mb-2" type="submit">LOGIN</button>
+        </div>
+    </form>
+    <hr>
+    <div class="text-center mb-2">
+        <h6>Don't have an account yet</h6>
+        <a href="/register" class="text-decoration-none">Create an account</a>
+    </div>
+</div>
+
+    </div>
+    <div class="col-4"></div>
+</div>

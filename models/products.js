@@ -11,7 +11,11 @@ const ProductSchema = new Schema({
     image:String,
     description:String,
     price:Number,
-    location:String
+    location:String,
+    owner:{
+        type:Schema.Types.ObjectId,
+        ref:'User'
+    }
 })
 
 const Product = mongoose.model('Product',ProductSchema);

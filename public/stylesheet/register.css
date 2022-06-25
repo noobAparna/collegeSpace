@@ -1,0 +1,12 @@
+body{
+    background-color: #F7E2E2;
+    font-family: 'Nunito', sans-serif;
+}
+.heading{
+    color: red;
+    letter-spacing: 0.3rem;
+}
+.maindiv{
+    background-color: #F9F9F9;
+    box-shadow: 2px 2px 5px 1px #f8b6b6;
+}
