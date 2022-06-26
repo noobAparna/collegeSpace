@@ -4,7 +4,7 @@ const catchAsync = require('../util/catchAsync');
 const ExpressError = require('../util/ExpressError');
 const Product = require('../models/products');
 const {productSchema} = require("../schemas");
-const {isLoggedIn} = require('../middleware');
+const {isLoggedIn, isAuthor} = require('../middleware');
 
 const validateProduct = (req,res,next)=>{
     const {error} = productSchema.validate(req.body);
@@ -23,17 +23,19 @@ router.get('/',catchAsync(async(req,res)=>{
 }))
 
 router.get('/new',isLoggedIn,(req,res) =>{
-    res.render('product/new');
+    const user = req.user;
+    res.render('product/new',{user});
 })
 router.post('/',isLoggedIn,validateProduct,catchAsync(async(req,res)=>{
     const product = new Product(req.body.product);
+    product.owner = req.user._id;
     await product.save();
     req.flash('success', 'Successfully made a new ad');;
     res.redirect(`product/${product._id}`);
 }))
 router.get('/:id',catchAsync(async(req,res)=>{
     const id = req.params.id;
-    const product = await Product.findById(id);
+    const product = await Product.findById(id).populate('owner');
     if (!product) {
         req.flash('error', 'Cannot find that product');
         return res.redirect('/product');
@@ -41,8 +43,8 @@ router.get('/:id',catchAsync(async(req,res)=>{
     res.render('product/show',{product});
 }))
 
-router.get('/:id/edit',isLoggedIn, catchAsync(async(req,res)=>{
-    const product = await Product.findById(req.params.id);
+router.get('/:id/edit',isLoggedIn, isAuthor,catchAsync(async(req,res)=>{
+    const product = await Product.findById(req.params.id).populate('owner');
     if (!product) {
         req.flash('error', 'Cannot find that product');
         return res.redirect('/product');
@@ -50,7 +52,7 @@ router.get('/:id/edit',isLoggedIn, catchAsync(async(req,res)=>{
     res.render('product/edit',{product});
 }))
 
-router.put('/:id',isLoggedIn, validateProduct,catchAsync(async(req,res)=>{
+router.put('/:id',isLoggedIn, isAuthor, validateProduct,catchAsync(async(req,res)=>{
     const id = req.params.id;
     const product = await Product.findByIdAndUpdate(id,{...req.body.product});
     // await product.save();
@@ -58,7 +60,7 @@ router.put('/:id',isLoggedIn, validateProduct,catchAsync(async(req,res)=>{
     res.redirect(`/product/${product._id}`);
 }))
 
-router.delete('/:id',isLoggedIn, catchAsync(async(req,res)=>{
+router.delete('/:id',isLoggedIn, isAuthor, catchAsync(async(req,res)=>{
     const id = req.params.id;
     const product = await Product.findByIdAndDelete(id);
     req.flash('success', 'Successfully deleted');
