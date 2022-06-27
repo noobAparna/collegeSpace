@@ -58,11 +58,13 @@
                 <div class="card product-details">
                     <div class="card-body">
                         <h6>Seller Description</h6>
-                        <h6><%= product.owner.fullName %> </h6>
+                        <h6><%= product.owner.username%> </h6>
+                        <% if(!currentUser || (currentUser && !product.owner.equals(currentUser))){%> 
                         <div class="card-body">
-                            <a href="#" class="card-link">View Profile</a>
+                            <a href="/profile/<%=product.owner._id%> " class="card-link">View Profile</a>
                             <a href="#" class="card-link">Chat with seller</a>
                         </div>
+                        <% } %> 
 
                     </div>
 

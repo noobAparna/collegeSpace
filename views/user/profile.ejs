@@ -1,0 +1,110 @@
+<% layout('layouts/boilerplate') %>
+    <link rel="stylesheet" href="/stylesheet/profile.css">
+    <div class="container">
+        <div class="row">
+            <div class="profile-section card">
+                <h5 class="text-center mt-3">Profile Details</h5>
+                <hr>
+                <div id="profile-info-div card-body">
+                    <div class="profile-info">
+                        <div class="info-title">Name</div>
+                        <div class="info-detail">
+                            <% if(!currUser.fullName) {%> -not added- <% }else{%>
+                                    <%= currUser.fullName %>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-title">Mobile Number</div>
+                        <div class="info-detail">
+                            <% if(!currUser.mobileNumber) {%> -not added- <% }else{%>
+                                    <%= currUser.mobileNumber %>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-title">Email</div>
+                        <div class="info-detail">
+                            <% if(!currUser.email) {%> -not added- <% }else{%>
+                                    <%= currUser.email %>
+                                        <% } %>
+                        </div>
+                    </div class="profile-info">
+                    <div class="profile-info">
+                        <div class="info-title">Gender</div>
+                        <div class="info-detail">
+                            <% if(!currUser.gender) {%> -not added- <% }else{%>
+                                    <%= currUser.gender %>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-title">Location</div>
+                        <div class="info-detail">
+                            <% if(!currUser.location) {%> -not added- <% }else{%>
+                                    <%= currUser.location %>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-title">College</div>
+                        <div class="info-detail">
+                            <% if(!currUser.collegeName) {%> -not added- <% }else{%>
+                                    <%= currUser.collegeName %>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="info-title">Course</div>
+                        <div class="info-detail">
+                            <% if(!currUser.course) {%> -not added- <% }else{%>
+                                    <%= currUser.course %>
+                                        <% } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto mt-4 mb-4 profile-info-btn ">
+                    <a class="btn" href="/profile/edit" role="button">Edit Profile</a>
+                </div>
+            </div>
+            <div class="ad-section">
+                <h4>Your Ad</h4>
+                <div class="container">
+                    <% for(let post of currUser.adPost){ %>
+                        <div class="card mb-3">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img class="img-fluid" style="height:100%" src="<%= post.image %>" alt="">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= post.title%></h5>
+                                        <p class="card-text overflow-hidden" style="height: 3em;" ><%= post.description %> </p>
+                                        <p class="card-text">
+                                            <small class="card-text"> Price : <%= post.price %> </small>
+                                        </p>
+                                        <p class="card-text">
+                                            <small class="card-text">Location : <%= post.location %> </small>
+                                        </p>
+                                        
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a href="/product/<%= post._id %>" class="btn btn-sm btn-outline-secondary">View</a>
+                                                <a href="/product/<%= post._id %>/edit" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                            </div>
+                                            <div>
+                                                <small class="text-muted">
+                                                    2days
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>

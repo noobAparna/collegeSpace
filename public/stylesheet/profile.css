@@ -1,0 +1,45 @@
+body{
+    background-color: #F7E2E2;
+    font-family: 'Nunito', sans-serif;
+}
+.profile-section{
+    /* border: 1px solid red; */
+    margin-top: 2em;
+}
+
+#profile-info-div{
+    /* border: 1px solid green; */
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profile-info{
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.info-title{
+    /* border: 1px solid pink; */
+    text-align: end;
+    padding-right: 2em;
+    width: 50%;
+    
+}
+
+.info-detail{
+    width: 50%;
+    padding-left: 1em;
+}
+
+.profile-info-btn a{
+    background-color: #F7E2E2;
+}
+.ad-section{
+    border: 1px solid red;
+    margin-top: 1.5em;
+
+}

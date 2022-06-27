@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheet/otherProfile.css">
+<div class="container UserInfoSection">
+    <div class="row">
+        <div class="col-2 p-4">
+            <img src="/images/user.png" class="img-fluid" alt="">
+        </div>
+        <div class="col-10 ps-5 d-flex align-items-center">
+            <h1><%= user.username %></h1>
+        </div>
+    </div>
+</div>
+
+<div class="container adPostSection">
+    <h4>PUBLISHED ADS</h4>
+     <div class="row">
+        
+        <% for(let post of user.adPost){ %> 
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3" >
+            <div class="card cardBody" onclick="location.href = '/product/<%= (post._id.toString()) %>'" style="height: 21em;">
+                    <img src="<%= post.image %> " class="card-img-top" alt="...">
+                    <div class="card-body productBody overflow-hidden">
+                        <h5 class="card-title">
+                            <%= post.title %>
+                        </h5>
+                        <h6>Price-<%= post.price %> </h6>
+                        <div>
+                            <p class="text-muted"> <%= post.location %></p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <% } %> 
+     </div>
+    
+</div>

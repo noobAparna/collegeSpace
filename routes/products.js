@@ -5,6 +5,7 @@ const ExpressError = require('../util/ExpressError');
 const Product = require('../models/products');
 const {productSchema} = require("../schemas");
 const {isLoggedIn, isAuthor} = require('../middleware');
+const User = require('../models/user');
 
 const validateProduct = (req,res,next)=>{
     const {error} = productSchema.validate(req.body);
@@ -29,7 +30,10 @@ router.get('/new',isLoggedIn,(req,res) =>{
 router.post('/',isLoggedIn,validateProduct,catchAsync(async(req,res)=>{
     const product = new Product(req.body.product);
     product.owner = req.user._id;
+    const user = await User.findById(req.user._id);
+    user.adPost.push(product);
     await product.save();
+    await user.save();
     req.flash('success', 'Successfully made a new ad');;
     res.redirect(`product/${product._id}`);
 }))
